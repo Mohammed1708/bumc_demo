@@ -21,11 +21,19 @@
     <link rel="stylesheet" href="css/navbar/navbar.css">
     <link rel="stylesheet" href="css/swiper/swiper.css">
     <link rel="stylesheet" href="css/kontak/kontak.css">
+    <link rel="stylesheet" href="css/fasilitas/fasilitas.css">
+    <link rel="stylesheet" href="css/mitra/mitra.css">
+
+    <!-- Connect JS -->
+    <script src="js/fasilitas.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/navbar.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -68,30 +76,6 @@
             </div>
         </div>
     </nav>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var menuToggle = document.getElementById('menu-toggle');
-            var mobileMenu = document.getElementById('mobile-menu');
-
-            menuToggle.addEventListener('click', function(event) {
-                event.stopPropagation();
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('block'); // Ensures visibility
-            });
-
-            document.addEventListener('click', function(event) {
-                if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('block');
-                }
-            });
-            menuToggle.addEventListener("click", function(event) {
-                console.log("Hamburger clicked!"); // Check if this prints in console
-                event.stopPropagation();
-                mobileMenu.classList.toggle("hidden");
-            });
-        });
-    </script>
 
     <!-- Swiper -->
     <section class="relative min-s-screen pt-24" id="slider">
@@ -119,37 +103,7 @@
     </section>
 
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Swiper
-            var swiper = new Swiper('.swiper-container', {
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                preloadImages: true,
-                updateOnImagesReady: true,
-            });
 
-            // Mobile Menu Toggle
-            var menuToggle = document.getElementById('menu-toggle');
-            var mobileMenu = document.getElementById('mobile-menu');
-
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
-    </script>
 
     <section id="tentang-kami" class="center-page">
         <div class="container mx-auto py-12">
@@ -241,40 +195,7 @@
                     </div>
                 </div>
             </div>
-
-            <style>
-                .mitra {
-                    display: flex;
-                    overflow: hidden;
-                    width: 100%;
-                    position: relative;
-                }
-
-                .mitra-track {
-                    display: flex;
-                    width: max-content;
-                    animation: scroll 15s linear infinite;
-                }
-
-                .mit {
-                    min-width: 150px;
-                    margin: 0 15px;
-                }
-
-                @keyframes scroll {
-                    from {
-                        transform: translateX(0);
-                    }
-
-                    to {
-                        transform: translateX(-50%);
-                    }
-                }
-            </style>
         </div>
-        </div>
-        </div>
-
 
         <!-- Layanan -->
 
@@ -374,80 +295,6 @@
                 </div>
             </div>
         </section>
-
-
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-        <style>
-            /* Geser tombol navigasi agar tidak menutupi gambar */
-
-
-            .swiper-button-prev {
-                left: -40px;
-            }
-
-            .swiper-button-next {
-                right: -40px;
-            }
-
-            /* Mencegah gambar yang tidak aktif terlihat */
-            .swiper-slide {
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            /* Hanya gambar yang aktif dan di sampingnya yang terlihat */
-            .swiper-slide-active,
-            .swiper-slide-next,
-            .swiper-slide-prev {
-                opacity: 1;
-            }
-
-            /* Mencegah slide keluar dari batas */
-            .swiper-fasilitas {
-                overflow: hidden;
-            }
-
-            /* Warna pagination bullet */
-            .swiper-pagination-bullet {
-                background-color: black !important;
-                /* Ubah warna bullet jadi hitam */
-                width: 10px;
-                height: 10px;
-                opacity: 0.5;
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            /* Aktifkan warna bullet yang sedang dipilih */
-            .swiper-pagination-bullet-active {
-                opacity: 1;
-            }
-        </style>
-
-<script>
-    var swiper = new Swiper('.swiper-fasilitas', {
-        slidesPerView: 3, // Number of slides visible at once
-        centeredSlides: true, // Ensure the active slide is centered
-        loop: true, // Enable continuous loop mode
-        spaceBetween: 20, // Space between slides
-        autoplay: {
-            delay: 3000, // Time in milliseconds (3 seconds)
-            disableOnInteraction: false, // Keep autoplay running even when the user interacts
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: false,
-        },
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-    });
-</script>
 
         <!-- Dokter -->
 
