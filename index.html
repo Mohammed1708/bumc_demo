@@ -425,25 +425,29 @@
             }
         </style>
 
-        <script>
-            var swiper = new Swiper('.swiper-fasilitas', {
-                slidesPerView: 3, // Menyesuaikan jumlah gambar yang terlihat
-                centeredSlides: true, // Memastikan slide utama berada di tengah
-                loop: true, // Agar looping berkelanjutan
-                spaceBetween: 20, // Jarak antar gambar
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    dynamicBullets: false, // Pastikan pagination menampilkan semua bullet
-                },
-                watchSlidesVisibility: true, // Hanya menampilkan slide yang terlihat
-                watchSlidesProgress: true, // Memantau progres slide
-            });
-        </script>
+<script>
+    var swiper = new Swiper('.swiper-fasilitas', {
+        slidesPerView: 3, // Number of slides visible at once
+        centeredSlides: true, // Ensure the active slide is centered
+        loop: true, // Enable continuous loop mode
+        spaceBetween: 20, // Space between slides
+        autoplay: {
+            delay: 3000, // Time in milliseconds (3 seconds)
+            disableOnInteraction: false, // Keep autoplay running even when the user interacts
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: false,
+        },
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+</script>
 
         <!-- Dokter -->
 
