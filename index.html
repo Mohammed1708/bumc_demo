@@ -197,60 +197,123 @@
             </div>
         </div>
 
-        <!-- Layanan -->
+         <style>
+   .pop-up {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .pop-up.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+  </style>
+ </head>
+ <body class="bg-white text-gray-800">
+  <!-- Layanan -->
+  <section class="center-page" id="layanan">
+   <div class="container mx-auto py-12 px-4">
+    <h1 class="text-center text-3xl font-bold mb-4">
+     LAYANAN
+    </h1>
+    <div class="flex justify-center mb-8">
+     <div class="w-16 border-t-2 border-gray-400">
+     </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/human_64px.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        SPESIALIS PENYAKIT DALAM
+       </h2>
+       <p class="text-gray-600">
+        Pemeriksaan, diagnosis, dan penanganan berbagai penyakit yang berkaitan dengan organ dalam dan kondisi kesehatan umum.
+       </p>
+      </div>
+     </div>
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/molar-tooth.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        DOKTER GIGI
+       </h2>
+       <p class="text-gray-600">
+        Layanan perawatan gigi dan mulut, termasuk pemeriksaan, pembersihan, perbaikan, dan tindakan medis lainnya untuk kesehatan oral.
+       </p>
+      </div>
+     </div>
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/health.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        DOKTER UMUM
+       </h2>
+       <p class="text-gray-600">
+        Konsultasi medis untuk berbagai keluhan kesehatan, pemeriksaan awal, pengobatan umum, serta rujukan jika diperlukan.
+       </p>
+      </div>
+     </div>
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/physiotherapy.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        FISIOTERAPI
+       </h2>
+       <p class="text-gray-600">
+        Terapi untuk meningkatkan fungsi tubuh, mengurangi nyeri, serta membantu pemulihan akibat cedera atau kondisi medis tertentu.
+       </p>
+      </div>
+     </div>
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/x-ray.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        RADIOLOGI
+       </h2>
+       <p class="text-gray-600">
+        Pemeriksaan pencitraan medis untuk membantu diagnosis dan pemantauan kondisi kesehatan dengan teknologi medis terkini.
+       </p>
+      </div>
+     </div>
+     <div class="flex items-start pop-up">
+      <img alt="" class="mr-4" height="50" src="./assets/icons/first-aid-kit.png" width="50"/>
+      <div>
+       <h2 class="text-lg font-bold">
+        MCU
+       </h2>
+       <p class="text-gray-600">
+        Pemeriksaan kesehatan menyeluruh untuk mengetahui kondisi tubuh dan mendeteksi potensi masalah kesehatan lebih dini.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('#layanan .pop-up');
 
-        <section id="layanan" class="center-page">
-            <div class="container mx-auto py-12">
-                <h1 class="text-center text-3xl font-bold mb-4">LAYANAN</h1>
-                <div class="flex justify-center mb-8">
-                    <div class="w-16 border-t-2 border-gray-400"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="flex items-start">
-                        <img src="assets/icons/human_64px.png" alt="Icon specialis penyakit dalam" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">SPESIALIS PENYAKIT DALAM</h2>
-                            <p class="text-gray-600">Pemeriksaan, diagnosis, dan penanganan berbagai penyakit yang berkaitan dengan organ dalam dan kondisi kesehatan umum.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <img src="assets/icons/molar-tooth.png" alt="Icon of a dentist" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">DOKTER GIGI</h2>
-                            <p class="text-gray-600">Layanan perawatan gigi dan mulut, termasuk pemeriksaan, pembersihan, perbaikan, dan tindakan medis lainnya untuk kesehatan oral.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <img src="assets/icons/health.png" alt="Icon of a general practitioner" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">DOKTER UMUM</h2>
-                            <p class="text-gray-600">Konsultasi medis untuk berbagai keluhan kesehatan, pemeriksaan awal, pengobatan umum, serta rujukan jika diperlukan.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <img src="assets/icons/physiotherapy.png" alt="Icon of a physiotherapist" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">FISIOTERAPI</h2>
-                            <p class="text-gray-600">Terapi untuk meningkatkan fungsi tubuh, mengurangi nyeri, serta membantu pemulihan akibat cedera atau kondisi medis tertentu.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <img src="assets/icons/x-ray.png" alt="Icon of a radiologist" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">RADIOLOGI</h2>
-                            <p class="text-gray-600">Pemeriksaan pencitraan medis untuk membantu diagnosis dan pemantauan kondisi kesehatan dengan teknologi medis terkini.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <img src="assets/icons/first-aid-kit.png" alt="Icon of a medical check-up" class="mr-4" width="50" height="50">
-                        <div>
-                            <h2 class="text-lg font-bold">MCU</h2>
-                            <p class="text-gray-600">Pemeriksaan kesehatan menyeluruh untuk mengetahui kondisi tubuh dan mendeteksi potensi masalah kesehatan lebih dini.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            items.forEach(item => {
+                observer.observe(item);
+            });
+        });
+  </script>
 
         <!-- fasilitas -->
 
