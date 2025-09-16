@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo - BUMC Medical Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #15803d;
+            --primary-foreground: #ffffff;
+            --secondary: #f0fdf4;
+            --accent: #84cc16;
+            --muted: #f9fafb;
+            --muted-foreground: #6b7280;
+            --card: #f0fdf4;
+            --foreground: #374151;
+        }
+        
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+        
+        .promo-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown {
+            background: linear-gradient(135deg, #15803d, #84cc16);
+        }
+    </style>
+</head>
+<body class="font-body">
+   <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- replaced text BUMC with logo image -->
+                    <img src="assets/bumc-logo-red.png" 
+                         alt="BUMC Medical Center" 
+                         class="h-10 w-auto">
+                </div>
+                <!-- Desktop navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-green-700 transition-colors">Beranda</a>
+                    <a href="profile.html" class="text-gray-700 hover:text-green-700 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="text-gray-700 hover:text-green-700 transition-colors">Informasi</a>
+                    <a href="promo.html" class="text-gray-700 hover:text-green-700 transition-colors">Promo</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-700 transition-colors">Kontak</a>
+                </div>
+                <!-- Added mobile menu button with proper functionality -->
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+            <!-- Added mobile menu dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Beranda</a>
+                    <a href="profile.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Informasi</a>
+                    <a href="promo.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Promo</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-green-50 to-green-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-heading text-5xl md:text-6xl font-bold mb-6 text-balance" style="color: var(--primary)">
+                Promo Spesial
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                Dapatkan penawaran terbaik untuk kesehatan Anda dan keluarga
+            </p>
+        </div>
+    </section>
+
+    <!-- Promo Utama -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="countdown text-white rounded-2xl p-12 text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">
+                    🎉 GRAND OPENING PROMO 🎉
+                </h2>
+                <p class="text-2xl mb-8">Diskon hingga 50% untuk semua layanan!</p>
+                <div class="flex justify-center space-x-8 mb-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" id="days">30</div>
+                        <div class="text-sm">Hari</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" id="hours">12</div>
+                        <div class="text-sm">Jam</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" id="minutes">45</div>
+                        <div class="text-sm">Menit</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" id="seconds">30</div>
+                        <div class="text-sm">Detik</div>
+                    </div>
+                </div>
+                <button class="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
+                    Ambil Promo Sekarang!
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Cards -->
+    <section class="py-20" style="background-color: var(--secondary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Promo Terbaru
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Berbagai penawaran menarik untuk layanan kesehatan terbaik
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Promo 1 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Medical Checkup" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            50% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Medical Check Up Lengkap
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Pemeriksaan kesehatan menyeluruh dengan 25+ parameter laboratorium
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 750.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 1.500.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 31 Desember 2024</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Vaksinasi" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            30% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Paket Vaksinasi Keluarga
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Vaksinasi lengkap untuk seluruh anggota keluarga (4 orang)
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 2.100.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 3.000.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 15 Januari 2025</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Homeservice" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            GRATIS
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Homeservice Gratis
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Layanan kesehatan di rumah tanpa biaya transportasi
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 200.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 300.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 28 Februari 2025</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promo 4 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Dental Care" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            40% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Perawatan Gigi Lengkap
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Scaling, pemeriksaan, dan konsultasi dengan dokter gigi
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 300.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 500.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 10 Januari 2025</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promo 5 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Lab Test" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            25% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Paket Laboratorium Premium
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Pemeriksaan lab lengkap dengan 50+ parameter kesehatan
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 1.125.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 1.500.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 20 Januari 2025</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promo 6 -->
+                <div class="promo-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Maternity Package" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            35% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-2xl font-bold mb-3" style="color: var(--primary)">
+                            Paket Kehamilan Sehat
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Pemeriksaan kehamilan lengkap dengan USG 4D
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--primary)">Rp 1.950.000</span>
+                                <span class="text-gray-500 line-through ml-2">Rp 3.000.000</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Berlaku hingga 5 Februari 2025</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg font-semibold transition-colors" 
+                                style="background-color: var(--primary); color: var(--primary-foreground)">
+                            Ambil Promo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syarat dan Ketentuan -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Syarat & Ketentuan
+                </h2>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-8">
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Promo berlaku untuk pasien baru dan lama BUMC Medical Center</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Promo tidak dapat digabung dengan promo atau diskon lainnya</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Pembayaran dapat dilakukan secara tunai, kartu kredit, atau transfer bank</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Reservasi harus dilakukan minimal 1 hari sebelum kedatangan</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Promo berlaku sesuai dengan tanggal yang tertera pada masing-masing paket</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>BUMC berhak mengubah atau membatalkan promo tanpa pemberitahuan sebelumnya</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Untuk informasi lebih lanjut, hubungi customer service di (021) 1234-5678</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20" style="background-color: var(--primary)">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white">
+                Jangan Lewatkan Kesempatan Ini!
+            </h2>
+            <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto text-pretty">
+                Dapatkan pelayanan kesehatan terbaik dengan harga terjangkau. Hubungi kami sekarang untuk reservasi.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-phone mr-2"></i>
+                    Hubungi Sekarang
+                </button>
+                <button class="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    Chat WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 text-white" style="background-color: var(--primary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="font-heading text-2xl font-bold mb-6">BUMC</h3>
+                    <p class="text-green-100 mb-6 text-pretty">
+                        Medical Center terpercaya dengan pelayanan kesehatan berkualitas tinggi untuk seluruh keluarga.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-green-100 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="profile.html" class="text-green-100 hover:text-white transition-colors">Profil Klinik</a></li>
+                        <li><a href="information.html" class="text-green-100 hover:text-white transition-colors">Informasi</a></li>
+                        <li><a href="promo.html" class="text-green-100 hover:text-white transition-colors">Promo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Layanan</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pemeriksaan Umum</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pediatri</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Radiologi</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Laboratorium</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Kontak</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3"></i>
+                            <span class="text-green-100">Jl. Kesehatan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span class="text-green-100">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span class="text-green-100">info@bumc.co.id</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-3"></i>
+                            <span class="text-green-100">24 Jam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-green-600 mt-12 pt-8 text-center">
+                <p class="text-green-100">
+                    &copy; 2024 BUMC Medical Center. Semua hak dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date('2025-01-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = endDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (timeLeft < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>

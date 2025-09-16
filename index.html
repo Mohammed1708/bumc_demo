@@ -1,833 +1,764 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUMC</title>
-    <link rel="icon" href="assets/img/favicon.png">
-
-    <!-- Connect tailwind -->
+    <title>BUMC - Medical Center Terpercaya</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #A71C2E;
+            --primary-foreground: #ffffff;
+            --secondary: #f0fdf4;
+            --accent: #cc4b5c;
+            --muted: #f9fafb;
+            --muted-foreground: #6b7280;
+            --card: #f0fdf4;
+            --foreground: #374151;
+        }
+        
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+        
+        .hero-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .indicator.active {
+            background: white;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .partner-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        /* Added floating elements styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
 
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
 
-    <!-- Connect CSS -->
-    <link rel="stylesheet" href="css/navbar/navbar.css">
-    <link rel="stylesheet" href="css/swiper/swiper.css">
-    <link rel="stylesheet" href="css/kontak/kontak.css">
-    <link rel="stylesheet" href="css/fasilitas/fasilitas.css">
-    <link rel="stylesheet" href="css/mitra/mitra.css">
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
 
-    <!-- Connect JS -->
-    <script src="js/fasilitas.js"></script>
-    <script src="js/swiper.js"></script>
-    <script src="js/navbar.js"></script>
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+        }
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(21, 128, 61, 0.4);
+        }
+    </style>
 </head>
-
-<body>
-     <!-- Navigation Bar -->
-     <nav class="bg-white p-6 fixed top-0 left-0 w-full z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center ml-8">
-                <!-- Desktop Logo (Hidden on Mobile) -->
-                <img alt="Company logo, a stylized representation of the company initials"
-                    class="h-16 w-60 hidden md:block"
-                    src="assets/img/bumc-logo-red.png" />
-
-                <!-- Mobile Logo (Hidden on Desktop) -->
-                <img alt="Mobile logo" class="h-12 w-40 md:hidden block"
-                    src="assets/img/bumc-logo-red.png" />
-            </div>
-
-            <div class="hidden md:flex space-x-2 ml-10 text-lg">
-                <a class="nav-link" href="#slider">Beranda</a>
-                <a class="nav-link" href="#tentang-kami">Tentang Kami</a>
-                <a class="nav-link" href="#layanan">Layanan</a>
-                <a class="nav-link" href="#fasilitas">Fasilitas</a>
-                <a class="nav-link" href="#jadwal">Jadwal</a>
-                <a class="nav-link" href="#kontak">Hubungi Kami</a>
-            </div>
-            <!-- Hamburger Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-toggle" type="button-navbar" class="text-black focus:outline-none p-2 border border-gray-400 rounded-md">
-                    <i class="fas fa-bars text-2xl"></i>
+<body class="font-body">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- replaced text BUMC with logo image -->
+                    <img src="assets/bumc-logo-red.png" 
+                         alt="BUMC Medical Center" 
+                         class="h-10 w-auto">
+                </div>
+                <!-- Desktop navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-red-700 transition-colors">Beranda</a>
+                    <a href="profile.html" class="text-gray-700 hover:text-red-700 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="text-gray-700 hover:text-red-700 transition-colors">Informasi</a>
+                    <a href="promo.html" class="text-gray-700 hover:text-red-700 transition-colors">Promo</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-red-700 transition-colors">Kontak</a>
+                </div>
+                <!-- Added mobile menu button with proper functionality -->
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
                 </button>
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="fixed top-[80px] left-0 w-full bg-white shadow-md p-4 z-40 hidden transition-all duration-300">
-                    <a class="block py-2 px-4 text-black" href="#slider">Beranda</a>
-                    <a class="block py-2 px-4 text-black" href="#tentang-kami">Tentang Kami</a>
-                    <a class="block py-2 px-4 text-black" href="#layanan">Layanan</a>
-                    <a class="block py-2 px-4 text-black" href="#fasilitas">Fasilitas</a>
-                    <a class="block py-2 px-4 text-black" href="#jadwal">Jadwal</a>
-                    <a class="block py-2 px-4 text-black" href="#kontak">Hubungi Kami</a>
+            </div>
+            <!-- Added mobile menu dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Beranda</a>
+                    <a href="profile.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Informasi</a>
+                    <a href="promo.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Promo</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Kontak</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Swiper -->
-    <section class="relative min-s-screen pt-24" id="slider">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="swiper-slide-bg">
-                        <img alt="A scenic view of mountains during sunset with a clear sky" height="1080"
-                            src="assets/img/slider-1.jpg" width="1920" />
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-slide-bg">
-                        <img alt="A beautiful beach with turquoise water and white sand" height="1080"
-                            src="assets/img/slider-2.jpg" width="1920" />
-                    </div>
-                </div>
+    <!-- Section 1: Hero Section -->
+    <section id="home" class="hero-slider relative h-screen">
+        <!-- Slide 1 -->
+        <div class="slide active relative h-full bg-gradient-to-r from-green-50 to-green-100">
+            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
+            <img src="assets/slider-1.jpg" 
+                 alt="BUMC Medical Center" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
             </div>
-            <!-- Swiper Pagination -->
-            <!-- <div class="swiper-pagination"></div> -->
-            <!-- Swiper Navigation -->
-            <!-- <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide relative h-full bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
+            <img src="assets/Banner Website 1920x900px BUMC.jpg" 
+                 alt="Konsultasi Medis" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide relative h-full bg-gradient-to-r from-teal-50 to-teal-100">
+            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
+            <img src="assets/Banner Website BUMC paket vaksin umrah austus.jpg" 
+                 alt="Teknologi Medis" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+            </div>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <div class="indicator active" onclick="currentSlide(1)"></div>
+            <div class="indicator" onclick="currentSlide(2)"></div>
+            <div class="indicator" onclick="currentSlide(3)"></div>
         </div>
     </section>
 
-    <!-- Swiper JS -->
-
-
-    <section id="tentang-kami" class="center-page">
-        <div class="container mx-auto py-12">
-            <h1 class="text-center text-3xl font-bold mb-4">TENTANG KAMI</h1>
-            <div class="flex justify-center mb-8">
-                <div class="w-16 border-t-2 border-gray-400"></div>
+    <!-- Section 2: Kenapa Kami -->
+    <section id="why-us" class="py-20" style="background-color: var(--secondary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Kenapa Memilih BUMC?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Kami berkomitmen memberikan pelayanan kesehatan terbaik dengan standar internasional
+                </p>
             </div>
-            <div class="flex flex-col md:flex-row justify-center">
-                <div class="md:w-1/2 pr-4 mt-8">
-                    <p class="mb-4">
-                        Binawan University Medical Center (BUMC) adalah institusi pelayanan kesehatan yang didirikan untuk memenuhi kebutuhan masyarakat akan layanan kesehatan holistik yang tersedia di klinik kami. Layanan ini berawal dari pengalaman puluhan tahun Binawan Group dalam bidang pendidikan dan distribusi tenaga kesehatan profesional, yang membuka peluang internasional. Seiring dengan perkembangan layanan kesehatan global, BUMC terus berkembang untuk memberikan pelayanan yang berkualitas. Kami berkomitmen untuk terus berinovasi dan menyediakan layanan yang dapat diandalkan oleh setiap pasien.
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-user-md text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Konsultasi Langsung
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Dengan tenaga medis profesional dan ramah
                     </p>
                 </div>
-                <div class="md:w-1/2 pl-4 mt-8">
-                    <div class="mb-8">
-                        <h2 class="text-lg font-bold mb-2 text-center">VISI</h2>
-                        <hr class="border-t-2 border-red-500 mb-2">
-                        <p class="text font-size: var(--text-xl); line-height: var(--text-xl--line-height);">
-                            Menjadi pusat pelayanan kesehatan akademis terdepan dengan standar internasional melalui pengembangan penelitian dan penerapan ilmu yang didapat dari Program Studi Universitas Binawan.
-                        </p>
+
+                <!-- Service 2 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-microscope text-2xl text-white"></i>
                     </div>
-                    <div>
-                        <h2 class="text-lg font-bold mb-2 text-center">MISI</h2>
-                        <hr class="border-t-2 border-red-500 mb-2">
-                        <ul class="list-disc pl-5">
-                            <li class="mb-2">Memberikan pelayanan kesehatan yang berkualitas dan terbaik dengan mengutamakan kesejahteraan dan kesehatan pasien.</li>
-                            <li class="mb-2">Meningkatkan kualitas pelayanan dan standar operasional dengan terus mengembangkan pengetahuan, teknologi, dan sumber daya manusia.</li>
-                            <li class="mb-2">Mengembangkan dan menerapkan hasil penelitian ilmu kesehatan yang didapat dari program studi Universitas Binawan.</li>
-                            <li class="mb-2">Menjalin kemitraan dengan institusi kesehatan dan akademis dalam rangka pengembangan penelitian dan pelayanan kesehatan.</li>
-                            <li class="mb-2">Menyediakan lingkungan kerja yang aman, sehat, dan kondusif bagi karyawan, dokter, serta mahasiswa yang menjalani praktik klinik.</li>
-                        </ul>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Teknologi Modern
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Peralatan medis canggih dan terkini
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-syringe text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Vaksinasi Terjamin
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Layanan vaksinasi yang terjamin keasliannya
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-clock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Pemeriksaan Cepat
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Pemeriksaan cepat, akurat, dan efisien
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-heart text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Fasilitas Nyaman
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Fasilitas nyaman & pelayanan terpercaya
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-home text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Homeservice
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Homeservice & layanan korporasi fleksibel
+                    </p>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="service-card p-8 rounded-xl text-center" style="background-color: var(--card)">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-4" style="color: var(--foreground)">
+                        Lokasi Strategis
+                    </h3>
+                    <p class="text-gray-600 text-pretty">
+                        Lokasi strategis dan parkir luas
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Testimoni -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Testimoni Pasien
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Kepercayaan dan kepuasan pasien adalah prioritas utama kami
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" 
+                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Ibu Sarah</h4>
+                            <p class="text-sm" style="color: var(--muted-foreground)">Jakarta</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                        "Pelayanan di BUMC sangat memuaskan. Dokter dan perawatnya ramah, fasilitas lengkap dan modern. Sangat direkomendasikan!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" 
+                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Bapak Ahmad</h4>
+                            <p class="text-sm" style="color: var(--muted-foreground)">Bogor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                        "Homeservice BUMC sangat membantu. Tidak perlu repot ke rumah sakit, perawat datang langsung ke rumah dengan pelayanan profesional."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" 
+                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Ibu Maya</h4>
+                            <p class="text-sm" style="color: var(--muted-foreground)">Depok</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                        "Vaksinasi untuk keluarga di BUMC sangat terpercaya. Prosesnya cepat, aman, dan vaksin dijamin asli. Terima kasih BUMC!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="mitra" class="center-page">
-
-        <div class="container mx-auto py-12">
-            <h1 class="text-center text-3xl font-bold mb-4">MITRA KAMI</h1>
-            <div class="flex justify-center mb-8">
-                <div class="w-16 border-t-2 border-gray-400"></div>
+    <!-- Section 4: Mitra Kami -->
+    <section id="partners" class="py-20" style="background-color: var(--secondary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Mitra Terpercaya
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Bekerja sama dengan institusi kesehatan terkemuka
+                </p>
             </div>
-            <div class="mitra">
-                <div class="mitra-track">
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 1: A stylized representation of a tech company logo with abstract shapes and vibrant colors" height="100" src="assets/img/mitra/tiket.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 2: A minimalist logo with a monogram of the company's initials in a modern font" height="100" src="assets/img/mitra/bni.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 3: A logo featuring a globe with interconnected lines representing a global network" height="100" src="assets/img/mitra/fullerton.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 4: A logo with a shield and a checkmark symbolizing security and trust" height="100" src="assets/img/mitra/admedika.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 5: A logo with a stylized leaf and water droplet representing sustainability and eco-friendliness" height="100" src="assets/img/mitra/kemenkes.jpg" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 6: A logo with a gear and wrench symbolizing engineering and technical services" height="100" src="assets/img/mitra/halodoc.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 7: A logo with a stylized mountain and sun representing adventure and travel" height="100" src="assets/img/mitra/mandiri.png" width="150" />
-                    </div>
-                    <!-- Repeat the logos to create a seamless loop -->
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 1: A stylized representation of a tech company logo with abstract shapes and vibrant colors" height="100" src="assets/img/mitra/tiket.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 2: A minimalist logo with a monogram of the company's initials in a modern font" height="100" src="assets/img/mitra/bni.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 3: A logo featuring a globe with interconnected lines representing a global network" height="100" src="assets/img/mitra/fullerton.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 4: A logo with a shield and a checkmark symbolizing security and trust" height="100" src="assets/img/mitra/admedika.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 5: A logo with a stylized leaf and water droplet representing sustainability and eco-friendliness" height="100" src="assets/img/mitra/kemenkes.jpg" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 6: A logo with a gear and wrench symbolizing engineering and technical services" height="100" src="assets/img/mitra/halodoc.png" width="150" />
-                    </div>
-                    <div class="mit flex justify-center items-center p-4 bg-white shadow-md rounded-lg">
-                        <img alt="Client logo 7: A logo with a stylized mountain and sun representing adventure and travel" height="100" src="assets/img/mitra/mandiri.png" width="150" />
-                    </div>
+
+            <div class="overflow-hidden">
+                <div class="flex space-x-12 partner-scroll">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 1" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 2" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 3" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 4" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 5" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 6" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <!-- Duplicate for seamless scroll -->
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 1" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 2" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 3" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 4" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 5" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="/placeholder.svg?height=80&width=200" 
+                         alt="Partner 6" class="h-16 object-contain opacity-60 hover:opacity-100 transition-opacity">
                 </div>
             </div>
         </div>
+    </section>
 
-         <style>
-   .pop-up {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .pop-up.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-  </style>
- </head>
- <body class="bg-white text-gray-800">
-  <!-- Layanan -->
-  <section class="center-page" id="layanan">
-   <div class="container mx-auto py-12 px-4">
-    <h1 class="text-center text-3xl font-bold mb-4">
-     LAYANAN
-    </h1>
-    <div class="flex justify-center mb-8">
-     <div class="w-16 border-t-2 border-gray-400">
-     </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/human_64px.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        SPESIALIS PENYAKIT DALAM
-       </h2>
-       <p class="text-gray-600">
-        Pemeriksaan, diagnosis, dan penanganan berbagai penyakit yang berkaitan dengan organ dalam dan kondisi kesehatan umum.
-       </p>
-      </div>
-     </div>
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/molar-tooth.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        DOKTER GIGI
-       </h2>
-       <p class="text-gray-600">
-        Layanan perawatan gigi dan mulut, termasuk pemeriksaan, pembersihan, perbaikan, dan tindakan medis lainnya untuk kesehatan oral.
-       </p>
-      </div>
-     </div>
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/health.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        DOKTER UMUM
-       </h2>
-       <p class="text-gray-600">
-        Konsultasi medis untuk berbagai keluhan kesehatan, pemeriksaan awal, pengobatan umum, serta rujukan jika diperlukan.
-       </p>
-      </div>
-     </div>
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/physiotherapy.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        FISIOTERAPI
-       </h2>
-       <p class="text-gray-600">
-        Terapi untuk meningkatkan fungsi tubuh, mengurangi nyeri, serta membantu pemulihan akibat cedera atau kondisi medis tertentu.
-       </p>
-      </div>
-     </div>
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/x-ray.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        RADIOLOGI
-       </h2>
-       <p class="text-gray-600">
-        Pemeriksaan pencitraan medis untuk membantu diagnosis dan pemantauan kondisi kesehatan dengan teknologi medis terkini.
-       </p>
-      </div>
-     </div>
-     <div class="flex items-start pop-up">
-      <img alt="" class="mr-4" height="50" src="./assets/icons/first-aid-kit.png" width="50"/>
-      <div>
-       <h2 class="text-lg font-bold">
-        MCU
-       </h2>
-       <p class="text-gray-600">
-        Pemeriksaan kesehatan menyeluruh untuk mengetahui kondisi tubuh dan mendeteksi potensi masalah kesehatan lebih dini.
-       </p>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <script>
-   document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('#layanan .pop-up');
+    <!-- Section 5: Layanan -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Layanan Kami
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Layanan kesehatan komprehensif untuk seluruh keluarga
+                </p>
+            </div>
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.2
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            items.forEach(item => {
-                observer.observe(item);
-            });
-        });
-  </script>
-
-        <!-- fasilitas -->
-
-        <section class="center-page" id="fasilitas">
-            <div class="container mx-auto py-12">
-                <h1 class="text-center text-3xl font-bold mb-4">FASILITAS</h1>
-                <div class="flex justify-center mb-8">
-                    <div class="w-16 border-t-2 border-gray-400"></div>
-                </div>
-        
-                <!-- Centered Swiper Container -->
-                <div class="relative flex flex-col justify-center items-center max-w-6xl mx-auto">
-                    <!-- Swiper Slider -->
-                    <div class="swiper-fasilitas w-full">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/BUMC.jpg" alt="Image 1" class="fasilitas-img" />
-                                <span class="image-caption">BUMC</span>
-                            </div>
-        
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Lab Radiologi.jpg" alt="Image 2" class="fasilitas-img" />
-                                <span class="image-caption">Radiologi</span>
-                            </div>
-        
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Resepsionis.jpg" alt="Image 3" class="fasilitas-img" />
-                                <span class="image-caption">Resepsionis</span>
-                            </div>
-        
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Ruang Pemeriksaan.jpg" alt="Image 4" class="fasilitas-img" />
-                                <span class="image-caption">Pemeriksaan</span>
-                            </div>
-        
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Ruang Tunggu.jpg" alt="Image 5" class="fasilitas-img" />
-                                <span class="image-caption">Sterilisasi</span>
-                            </div>
-
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Ruang Sterilisasi.jpg" alt="Image 5" class="fasilitas-img" />
-                                <span class="image-caption">Sterilisasi</span>
-                            </div>
-
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Ruang Vaksinasi.jpg" alt="Image 5" class="fasilitas-img" />
-                                <span class="image-caption">Sterilisasi</span>
-                            </div>
-
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="assets/img/fasilitas/Ruang Sterilisasi.jpg" alt="Image 5" class="fasilitas-img" />
-                                <span class="image-caption">Sterilisasi</span>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-heartbeat text-2xl text-white"></i>
                     </div>
-        
-                    <!-- Pagination -->
-                    <div class="swiper-pagination mt-4"></div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Pemeriksaan Umum
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Pemeriksaan kesehatan rutin dan konsultasi medis umum dengan dokter berpengalaman.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-baby text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Pediatri
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Layanan kesehatan khusus untuk bayi, anak-anak, dan remaja dengan pendekatan yang ramah.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-x-ray text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Radiologi
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Layanan pencitraan medis lengkap dengan teknologi canggih untuk diagnosis yang akurat.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-vial text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Laboratorium
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Pemeriksaan laboratorium lengkap dengan hasil yang cepat dan akurat untuk berbagai kebutuhan medis.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--primary)">
+                        <i class="fas fa-ambulance text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Gawat Darurat
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Layanan gawat darurat 24 jam dengan tim medis siaga dan peralatan lengkap.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="group p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+                    <div class="w-16 h-16 mb-6 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" 
+                         style="background-color: var(--accent)">
+                        <i class="fas fa-user-nurse text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold mb-4" style="color: var(--foreground)">
+                        Rawat Inap
+                    </h3>
+                    <p class="text-gray-600 mb-6 text-pretty">
+                        Fasilitas rawat inap yang nyaman dengan perawatan 24 jam dari tenaga medis profesional.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold hover:underline" 
+                       style="color: var(--primary)">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-        
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        </div>
+    </section>
 
-
-        <!-- Dokter -->
-
-        <section id="jadwal" class="center-page">
-            <div class="container mx-auto py-12">
-                <h1 class="text-center text-3xl font-bold mb-4">Jadwal Dokter</h1>
-                <div class="flex justify-center mb-8">
-                    <div class="w-16 border-t-2 border-gray-400"></div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                    <!-- Doctor Specialis Penyakit Dalam 1 Dr Nabila Hasan -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. Dewi Kartika SpOG" class="w-full h-full object-cover" height="100"
-                                    src="assets/img/dr/dr Nabila Hasan, Sp PD.jpg" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">dr. Nabila Hasan, Sp.PD</h2>
-                        <p class="text-gray-600 mb-4">Dokter Spesialis Kandungan</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#exampleModalCenter">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
+    <!-- Footer -->
+    <footer class="py-16 text-white" style="background-color: var(--primary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="font-heading text-2xl font-bold mb-6">BUMC</h3>
+                    <p class="text-green-100 mb-6 text-pretty">
+                        Medical Center terpercaya dengan pelayanan kesehatan berkualitas tinggi untuk seluruh keluarga.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>On Call</strong> (dengan perjanjian)</p>
-                                    <p>Silakan hubungi kami untuk membuat janji temu.</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Dokter Umum -->
-                    <!-- Doctor 1 Dr Nadiah -->
-                    <!-- Jadwal: (Rabu & Jumat, Jam 13.00 - 17.00 WIB) & (Sabtu, Jam 09.00 - 14.00 WIB) -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="assets/img/dr/dr Nadiah, M Si.jpg" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">dr. Nadiah, M.Si </h2>
-                        <p class="text-gray-600 mb-4">Dokter Umum</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docnadiah">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docnadiah" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Rabu & Jumat: </strong>13.00 - 17.00 WIB</p>
-                                    <p><strong>Sabtu: </strong>09.00 - 14.00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Doctor 2 Dr Marsha Ruthy Darmawan, Sp Rad -->
-                    <!-- Jadwal: Senin - Jum’at, Jam 14:00 - 17:00 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="assets/img/dr/dr Marsha Ruthy Darmawan, SpRad.jpeg" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">dr Marsha Ruthy Darmawan, Sp Rad</h2>
-                        <p class="text-gray-600 mb-4">Dokter Umum</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docmarsha">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docmarsha" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Senin - Jumat: </strong>14:00 - 17:00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Doctor 3 dr Ambun Suri, MARS -->
-                    <!-- Jadwal: Selasa, Kamis, Jum’at, Jam 09.00 - 14.00 WIB -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="https://storage.googleapis.com/a1aa/image/sOVCW8MnuVlUS4BHQvZiFVGZ6O5s7TkS4VIvtYsxPGA.jpg" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">dr Ambun Suri, MARS</h2>
-                        <p class="text-gray-600 mb-4">Dokter Umum</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docambun">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
-                        </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docambun" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Selasa: </strong>09:00 - 14:00 WIB</p>
-                                    <p><strong>Kamis: </strong>09:00 - 14:00 WIB</p>
-                                    <p><strong>Jumat: </strong>09:00 - 14:00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Doctor Gigi -->
-                    <!-- Doctor 1 drg. Asri Insani Larasati -->
-                    <!-- Jadwal: Sabtu, Jam 10.00 - 14.00 WIB -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="https://storage.googleapis.com/a1aa/image/sOVCW8MnuVlUS4BHQvZiFVGZ6O5s7TkS4VIvtYsxPGA.jpg" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">drg. Asri Insani Larasati</h2>
-                        <p class="text-gray-600 mb-4">Dokter Gigi</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docasri">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
-                        </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docasri" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Sabtu: </strong>10:00 - 14:00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Doctor 2 drg. Syifa Al Qushoyyi -->
-                    <!-- Jadwal: Senin & Jum’at, Jam 09.00 - 14.00 WIB -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="assets/img/dr/drg Syifa Al Qushoyyi 2.JPEG" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">drg. Syifa Al Qushoyyi</h2>
-                        <p class="text-gray-600 mb-4">Dokter Gigi</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docsyifa">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
-                        </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docsyifa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Senin & Jumat: </strong>09:00 - 14:00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Doctor 3 drg. Aninda Puspa Hapsari -->
-                    <!-- Jadwal: Selasa, Kamis, Jum’at, Jam 09.00 - 14.00 WIB -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 rounded-full border-4 border-[#e0344c] overflow-hidden">
-                                <img alt="Portrait of dr. William Faisal, SpPD" class="w-full h-full object-cover" height="100" src="assets/img/dr/drg Aninda Puspa Hapsari.JPG" width="100" />
-                            </div>
-                        </div>
-
-                        <h2 class="text-l font-bold">drg. Aninda Puspa Hapsari</h2>
-                        <p class="text-gray-600 mb-4">Dokter Gigi</p>
-
-                        <!-- Button to trigger modal -->
-                        <button type="button" class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full mb-2 flex items-center justify-center"
-                            data-toggle="modal" data-target="#docaninda">
-                            <i class="fas fa-eye mr-2"></i>
-                            Lihat Jadwal
-                        </button>
-
-                        <a href="https://wa.me/08567997991" target="_blank" rel="noopener referer">
-                            <button class="bg-[#e0344c] text-white w-full px-4 py-2 rounded-full flex items-center justify-center">
-                                <i class="fab fa-whatsapp mr-2"></i>
-                                Reservasi Sekarang
-                            </button>
-                        </a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="docaninda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;"> <!-- Reduce width -->
-                            <div class="modal-content">
-                                <div class="modal-header text-center" style="display: flex; justify-content: center; width: 100%;">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle" style="flex-grow: 1; text-align: center;">Jadwal Dokter</h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <p><strong>Selasa: </strong>09:00 - 14:00 WIB</p>
-                                    <p><strong>Kamis: </strong>09:00 - 14:00 WIB</p>
-                                    <p><strong>Jumat: </strong>09:00 - 14:00 WIB</p>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Contact -->
-
-        <section id="kontak" class="center-page py-10">
-            <div class="container mx-auto">
-                <h1 class="text-center text-3xl font-bold mb-4">HUBUNGI KAMI</h1>
-                <div class="flex justify-center mb-6">
-                    <div class="w-16 border-t-2 border-gray-400"></div>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6 flex flex-col md:flex-row">
-                    <!-- Contact Information -->
-                    <div class="md:w-1/2 p-4">
-                        <h2 class="text-2xl font-bold mb-4">Informasi Kontak</h2>
-                        <div class="mb-4">
-                            <h3 class="text-xl font-semibold">Alamat</h3>
-                            <p>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Jl. Dewi Sartika No.25 - 30, Kalibata, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13630
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="text-xl font-semibold">Telepon</h3>
-                            <p>
-                                <i class="fas fa-phone-alt"></i>
-                                0218096222
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="text-xl font-semibold">WhatsApp</h3>
-                            <p>
-                                <i class="fab fa-whatsapp"></i>
-                                08567997991
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="text-xl font-semibold">Email</h3>
-                            <p>
-                                <i class="fas fa-envelope"></i>
-                                bumc@binawan.ac.id
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="text-xl font-semibold">Jam Operasional</h3>
-                            <p>
-                                <i class="fa-regular fa-clock"></i>
-                                08.00 - 17.00 WIB
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Map -->
-                    <div class="md:w-1/2 p-4">
-                        <h2 class="text-2xl font-bold mb-4">Lokasi Kami</h2>
-                        <div class="relative w-full h-64 md:h-96">
-                            <iframe class="w-full h-full rounded-lg"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0462412341994!2d106.86087277573179!3d-6.257639261267588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f25537ac4cd3%3A0x30c0425b54c795fd!2sBUMC%20Kalibata%20-%20Binawan%20University%20Medical%20Center!5e0!3m2!1sen!2sid!4v1741317788903!5m2!1sen!2sid"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-
-        <!-- Footer -->
-        <footer class="relative z-10 bg-gradient-to-r from-gray-600 to-black text-white py-10 clear-both">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between">
-                <div class="mb-6 md:mb-0">
-                    <img height="150" width="150" src="assets/img/favicon.png" alt="Inter Medika Logo" class="mb-4">
-                    <p class="text-sm">Binawan University Medical Center</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a class="text-white" href="https://www.tiktok.com/@klinikbumc.id" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/bumc.id" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="mb-6 md:mb-0">
-                    <h3 class="font-bold mb-4">Kontak</h3>
-                    <p class="text-sm">Jl. Dewi Sartika No.25 - 30, Kalibata</p>
-                    <p class="text-sm"> Kec. Kramat jati, Kota Jakarta Timur</p>
-                    <p class="text-sm">Daerah Khusus Ibukota Jakarta 13630</p>
-                    <p class="text-sm mt-4"><i class="fas fa-envelope"></i> bumc@binawan.ac.id</p>
-                    <p class="text-sm"><i class="fas fa-phone-alt"></i> 021-8096-222</p>
-                    <p class="text-sm"><i class="fab fa-whatsapp"></i> 0856-7997-991</p>
-                </div>
-                <div class="mb-6 md:mb-0">
-                    <h3 class="font-bold mb-4">Menu</h3>
-                    <ul class="space-y-2">
-                        <li><a class="text-sm" href="#">Beranda</a></li>
-                        <li><a class="text-sm" href="#">Tentang Kami</a></li>
-                        <li><a class="text-sm" href="#">Pelayanan</a></li>
-                        <li><a class="text-sm" href="#">Promo</a></li>
-                        <li><a class="text-sm" href="#">Jadwal & Reservasi</a></li>
-                        <li><a class="text-sm" href="#">Kontak Kami</a></li>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <!-- Updated footer links to separate pages -->
+                        <li><a href="index.html" class="text-green-100 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="profile.html" class="text-green-100 hover:text-white transition-colors">Profil Klinik</a></li>
+                        <li><a href="information.html" class="text-green-100 hover:text-white transition-colors">Informasi</a></li>
+                        <li><a href="promo.html" class="text-green-100 hover:text-white transition-colors">Promo</a></li>
                     </ul>
                 </div>
-                <!-- <div>
-                    <h3 class="font-bold mb-4">Dapatkan Informasi Terbaru</h3>
-                    <form class="space-y-4">
-                        <input type="email" placeholder="Email" class="w-full px-4 py-2 text-sm text-gray-700 bg-white rounded-md focus:outline-none">
-                        <input type="text" placeholder="Whatsapp" class="w-full px-4 py-2 text-sm text-gray-700 bg-white rounded-md focus:outline-none">
-                        <button type="submit" class="w-full px-4 py-2 text-sm font-bold text-white bg-gray-600 rounded-md hover:bg-gray-700">
-                            SUBSCRIBE
-                        </button>
-                    </form>
-                </div> -->
-            </div>
-            <div class="container mx-auto px-4 mt-10 text-center">
-                <p class="text-sm">© 2025 Binawan University Medical Center | All Rights Reserved</p>
-            </div>
-            <div class="fixed bottom-4 right-4">
-                <a class="text-green-500 text-3xl" href="https://wa.me/08567997991" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-        </footer>
-</body>
 
+                <!-- Services -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Layanan</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pemeriksaan Umum</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pediatri</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Radiologi</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Laboratorium</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Kontak</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3"></i>
+                            <span class="text-green-100">Jl. Kesehatan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span class="text-green-100">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span class="text-green-100">info@bumc.co.id</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-3"></i>
+                            <span class="text-green-100">24 Jam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-green-600 mt-12 pt-8 text-center">
+                <p class="text-green-100">
+                    &copy; 2024 BUMC Medical Center. Semua hak dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Added WhatsApp floating button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/6281234567890?text=Halo%20BUMC,%20saya%20ingin%20konsultasi" 
+           target="_blank" 
+           class="whatsapp-button">
+            <i class="fab fa-whatsapp text-white text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Added back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up text-white"></i>
+    </div>
+
+    <script>
+        // Hero Slider Functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+        
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+        
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
 </html>

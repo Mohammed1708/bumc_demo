@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi - BUMC Medical Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #15803d;
+            --primary-foreground: #ffffff;
+            --secondary: #f0fdf4;
+            --accent: #84cc16;
+            --muted: #f9fafb;
+            --muted-foreground: #6b7280;
+            --card: #f0fdf4;
+            --foreground: #374151;
+        }
+        
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-content.active {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="font-body">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- replaced text BUMC with logo image -->
+                    <img src="assets/bumc-logo-red.png" 
+                         alt="BUMC Medical Center" 
+                         class="h-10 w-auto">
+                </div>
+                <!-- Desktop navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-green-700 transition-colors">Beranda</a>
+                    <a href="profile.html" class="text-gray-700 hover:text-green-700 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="text-gray-700 hover:text-green-700 transition-colors">Informasi</a>
+                    <a href="promo.html" class="text-gray-700 hover:text-green-700 transition-colors">Promo</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-700 transition-colors">Kontak</a>
+                </div>
+                <!-- Added mobile menu button with proper functionality -->
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+            <!-- Added mobile menu dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Beranda</a>
+                    <a href="profile.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Profil Klinik</a>
+                    <a href="information.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Informasi</a>
+                    <a href="promo.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Promo</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-green-50 to-green-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-heading text-5xl md:text-6xl font-bold mb-6 text-balance" style="color: var(--primary)">
+                Informasi Penting
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                Semua informasi yang Anda butuhkan tentang jadwal, fasilitas, dan hak-kewajiban pasien
+            </p>
+        </div>
+    </section>
+
+    <!-- Jadwal Dokter -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Jadwal Dokter
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Jadwal praktik dokter spesialis dan umum di BUMC Medical Center
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Dokter Umum -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--card)">
+                    <h3 class="font-heading text-2xl font-bold mb-6" style="color: var(--primary)">
+                        <i class="fas fa-user-md mr-3"></i>Dokter Umum
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Dr. Andi Wijaya</h4>
+                                <p class="text-gray-600">Dokter Umum</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold" style="color: var(--primary)">Senin - Jumat</p>
+                                <p class="text-gray-600">08:00 - 16:00</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Dr. Sari Indira</h4>
+                                <p class="text-gray-600">Dokter Umum</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold" style="color: var(--primary)">Sabtu - Minggu</p>
+                                <p class="text-gray-600">09:00 - 15:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dokter Spesialis -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--card)">
+                    <h3 class="font-heading text-2xl font-bold mb-6" style="color: var(--primary)">
+                        <i class="fas fa-stethoscope mr-3"></i>Dokter Spesialis
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Dr. Maya Sari, Sp.A</h4>
+                                <p class="text-gray-600">Spesialis Anak</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold" style="color: var(--primary)">Senin, Rabu, Jumat</p>
+                                <p class="text-gray-600">14:00 - 18:00</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Dr. Budi Santoso, Sp.PD</h4>
+                                <p class="text-gray-600">Spesialis Penyakit Dalam</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold" style="color: var(--primary)">Selasa, Kamis</p>
+                                <p class="text-gray-600">16:00 - 20:00</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Dr. Rina Dewi, Sp.OG</h4>
+                                <p class="text-gray-600">Spesialis Kandungan</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold" style="color: var(--primary)">Senin - Kamis</p>
+                                <p class="text-gray-600">10:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-6 rounded-xl text-center" style="background-color: var(--secondary)">
+                <p class="text-lg text-gray-700">
+                    <i class="fas fa-info-circle mr-2" style="color: var(--primary)"></i>
+                    Untuk membuat janji temu, silakan hubungi <strong>(021) 1234-5678</strong> atau datang langsung ke BUMC
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fasilitas -->
+    <section class="py-20" style="background-color: var(--secondary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Fasilitas Kami
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Fasilitas lengkap dan modern untuk mendukung pelayanan kesehatan terbaik
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Fasilitas 1 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--primary)">
+                        <i class="fas fa-bed text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Ruang Rawat Inap</h3>
+                    <p class="text-gray-600 text-pretty">Kamar rawat inap yang nyaman dengan fasilitas AC, TV, dan kamar mandi dalam</p>
+                </div>
+
+                <!-- Fasilitas 2 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--accent)">
+                        <i class="fas fa-x-ray text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Radiologi Digital</h3>
+                    <p class="text-gray-600 text-pretty">Peralatan radiologi canggih untuk X-Ray, CT Scan, dan USG dengan hasil akurat</p>
+                </div>
+
+                <!-- Fasilitas 3 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--primary)">
+                        <i class="fas fa-vial text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Laboratorium</h3>
+                    <p class="text-gray-600 text-pretty">Lab lengkap dengan teknologi otomatis untuk pemeriksaan darah, urine, dan lainnya</p>
+                </div>
+
+                <!-- Fasilitas 4 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--accent)">
+                        <i class="fas fa-pills text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Farmasi 24 Jam</h3>
+                    <p class="text-gray-600 text-pretty">Apotek lengkap dengan obat-obatan berkualitas dan pelayanan 24 jam</p>
+                </div>
+
+                <!-- Fasilitas 5 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--primary)">
+                        <i class="fas fa-ambulance text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Unit Gawat Darurat</h3>
+                    <p class="text-gray-600 text-pretty">IGD dengan tim medis siaga 24 jam dan peralatan emergency lengkap</p>
+                </div>
+
+                <!-- Fasilitas 6 -->
+                <div class="p-6 rounded-xl bg-white shadow-lg">
+                    <div class="w-16 h-16 mb-4 rounded-full flex items-center justify-center" style="background-color: var(--accent)">
+                        <i class="fas fa-car text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3" style="color: var(--foreground)">Parkir Luas</h3>
+                    <p class="text-gray-600 text-pretty">Area parkir yang luas dan aman untuk kendaraan roda dua dan empat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hak dan Kewajiban Pasien -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Hak & Kewajiban Pasien
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Memahami hak dan kewajiban untuk pelayanan kesehatan yang optimal
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Hak Pasien -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--card)">
+                    <h3 class="font-heading text-3xl font-bold mb-8" style="color: var(--primary)">
+                        <i class="fas fa-shield-alt mr-3"></i>Hak Pasien
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mendapat pelayanan kesehatan yang bermutu sesuai standar profesi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Memperoleh informasi lengkap tentang kondisi kesehatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Memberikan persetujuan atau menolak tindakan medis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mendapat perlindungan atas kerahasiaan kondisi kesehatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mendapat pendampingan keluarga dalam perawatan kritis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mengajukan pengaduan atas pelayanan yang diterima</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kewajiban Pasien -->
+                <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--card)">
+                    <h3 class="font-heading text-3xl font-bold mb-8" style="color: var(--primary)">
+                        <i class="fas fa-handshake mr-3"></i>Kewajiban Pasien
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Memberikan informasi yang jujur tentang kondisi kesehatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mematuhi petunjuk dan nasihat tenaga kesehatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Mematuhi ketentuan yang berlaku di fasilitas kesehatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Memberikan imbalan jasa atas pelayanan yang diterima</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Ikut berperan aktif dalam upaya penyembuhan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dot-circle text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-700">Menjaga kebersihan dan ketertiban lingkungan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20" style="background-color: var(--secondary)">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
+                    Pertanyaan yang sering diajukan tentang pelayanan BUMC Medical Center
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="font-heading text-lg font-semibold" style="color: var(--foreground)">
+                            Bagaimana cara membuat janji temu dengan dokter?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-1"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6" id="content-1">
+                        <p class="text-gray-600">
+                            Anda dapat membuat janji temu dengan menghubungi nomor (021) 1234-5678, datang langsung ke BUMC, atau melalui aplikasi mobile kami. Tim customer service kami siap membantu Anda 24 jam.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="font-heading text-lg font-semibold" style="color: var(--foreground)">
+                            Apakah BUMC menerima BPJS Kesehatan?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-2"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6" id="content-2">
+                        <p class="text-gray-600">
+                            Ya, BUMC Medical Center menerima BPJS Kesehatan untuk berbagai layanan. Pastikan Anda membawa kartu BPJS yang masih aktif dan dokumen pendukung lainnya.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="font-heading text-lg font-semibold" style="color: var(--foreground)">
+                            Berapa lama hasil pemeriksaan laboratorium keluar?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-3"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6" id="content-3">
+                        <p class="text-gray-600">
+                            Hasil pemeriksaan laboratorium rutin biasanya keluar dalam 2-4 jam. Untuk pemeriksaan khusus, hasil dapat keluar dalam 1-3 hari kerja. Anda akan dihubungi ketika hasil sudah siap.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="font-heading text-lg font-semibold" style="color: var(--foreground)">
+                            Apakah tersedia layanan homeservice?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-4"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6" id="content-4">
+                        <p class="text-gray-600">
+                            Ya, kami menyediakan layanan homeservice untuk pemeriksaan kesehatan, perawatan luka, dan layanan keperawatan di rumah. Hubungi kami untuk informasi lebih lanjut dan jadwal kunjungan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(5)">
+                        <h3 class="font-heading text-lg font-semibold" style="color: var(--foreground)">
+                            Jam operasional BUMC Medical Center?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="icon-5"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6" id="content-5">
+                        <p class="text-gray-600">
+                            BUMC buka 24 jam untuk layanan gawat darurat. Untuk poliklinik umum buka Senin-Jumat 08:00-20:00, Sabtu-Minggu 09:00-15:00. Jadwal dokter spesialis bervariasi, silakan cek jadwal dokter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 text-white" style="background-color: var(--primary)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="font-heading text-2xl font-bold mb-6">BUMC</h3>
+                    <p class="text-green-100 mb-6 text-pretty">
+                        Medical Center terpercaya dengan pelayanan kesehatan berkualitas tinggi untuk seluruh keluarga.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-green-100 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="profile.html" class="text-green-100 hover:text-white transition-colors">Profil Klinik</a></li>
+                        <li><a href="information.html" class="text-green-100 hover:text-white transition-colors">Informasi</a></li>
+                        <li><a href="promo.html" class="text-green-100 hover:text-white transition-colors">Promo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Layanan</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pemeriksaan Umum</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pediatri</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Radiologi</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Laboratorium</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Kontak</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3"></i>
+                            <span class="text-green-100">Jl. Kesehatan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            <span class="text-green-100">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span class="text-green-100">info@bumc.co.id</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-3"></i>
+                            <span class="text-green-100">24 Jam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-green-600 mt-12 pt-8 text-center">
+                <p class="text-green-100">
+                    &copy; 2024 BUMC Medical Center. Semua hak dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(index) {
+            const content = document.getElementById(`content-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            
+            // Close all other FAQs
+            for (let i = 1; i <= 5; i++) {
+                if (i !== index) {
+                    document.getElementById(`content-${i}`).classList.remove('active');
+                    document.getElementById(`icon-${i}`).style.transform = 'rotate(0deg)';
+                }
+            }
+            
+            // Toggle current FAQ
+            content.classList.toggle('active');
+            if (content.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
