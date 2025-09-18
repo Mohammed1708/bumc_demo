@@ -84,30 +84,65 @@
 
         /* Added floating elements styles */
         .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
 
-        .whatsapp-button {
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
+/* Make the link behave like a container */
+.whatsapp-wrapper {
+  display: inline-flex; /* Inline-flex keeps its natural width */
+  align-items: center;
+  text-decoration: none;
+}
 
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
+/* Ensure the label shows up */
+.whatsapp-label {
+  display: inline-block;
+  margin-left: 10px;
+  background: #25D366;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: background-color 0.3s;
+  visibility: visible;  /* Force visibility */
+  opacity: 1;          /* Force opacity */
+}
+
+.whatsapp-wrapper:hover .whatsapp-label {
+  background-color: #1ebc57;
+}
+
+.whatsapp-button {
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Hide the label on mobile screens (adjust breakpoint if needed) */
+@media (max-width: 768px) {
+  .whatsapp-label {
+    display: none;
+  }
+}
 
         @keyframes pulse {
             0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
@@ -181,42 +216,36 @@
         </div>
     </nav>
 
-    <!-- Section 1: Hero Section -->
     <section id="home" class="hero-slider relative h-screen">
-        <!-- Slide 1 -->
-        <div class="slide active relative h-full bg-gradient-to-r from-green-50 to-green-100">
-            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
-            <img src="assets/slider-1.jpg" 
-                 alt="BUMC Medical Center" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-            </div>
-        </div>
+  <!-- Slide 1 -->
+  <div class="slide active relative w-full h-full">
+    <img src="assets/slider-1.jpg"
+         alt="BUMC Medical Center"
+         class="w-full h-full md:object-cover object-contain object-center" />
+  </div>
 
-        <!-- Slide 2 -->
-        <div class="slide relative h-full bg-gradient-to-r from-blue-50 to-blue-100">
-            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
-            <img src="assets/Banner Website 1920x900px BUMC.jpg" 
-                 alt="Konsultasi Medis" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-            </div>
-        </div>
+  <!-- Slide 2 -->
+  <div class="slide active relative w-full h-full">
+    <img src="assets/Banner Website 1920x900px BUMC.jpg"
+         alt="BUMC Medical Center"
+         class="w-full h-full md:object-cover object-contain object-center" />
+  </div>
 
-        <!-- Slide 3 -->
-        <div class="slide relative h-full bg-gradient-to-r from-teal-50 to-teal-100">
-            <div class="absolute inset-0 bg-black bg-opacity-0"></div>
-            <img src="assets/Banner Website BUMC paket vaksin umrah austus.jpg" 
-                 alt="Teknologi Medis" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-            </div>
-        </div>
+  <!-- Slide 3 -->
+  <div class="slide active relative w-full h-full">
+    <img src="assets/Banner Website BUMC paket vaksin umrah austus.jpg"
+         alt="BUMC Medical Center"
+         class="w-full h-full md:object-cover object-contain object-center" />
+  </div>
 
-        <!-- Slide Indicators -->
-        <div class="slide-indicators">
-            <div class="indicator active" onclick="currentSlide(1)"></div>
-            <div class="indicator" onclick="currentSlide(2)"></div>
-            <div class="indicator" onclick="currentSlide(3)"></div>
-        </div>
-    </section>
+  <!-- Slide Indicators -->
+  <div class="slide-indicators">
+    <div class="indicator active" onclick="currentSlide(1)"></div>
+    <div class="indicator" onclick="currentSlide(2)"></div>
+    <div class="indicator" onclick="currentSlide(3)"></div>
+  </div>
+</section>
+
 
     <!-- Section 2: Kenapa Kami -->
     <section id="why-us" class="py-20" style="background-color: var(--secondary)">
@@ -662,12 +691,15 @@
 
     <!-- Added WhatsApp floating button -->
     <div class="whatsapp-float">
-        <a href="https://wa.me/6281234567890?text=Halo%20BUMC,%20saya%20ingin%20konsultasi" 
-           target="_blank" 
-           class="whatsapp-button">
-            <i class="fab fa-whatsapp text-white text-2xl"></i>
-        </a>
+  <a href="https://wa.me/6281234567890?text=Halo%20BUMC,%20saya%20ingin%20konsultasi" 
+     target="_blank" 
+     class="whatsapp-wrapper">
+    <div class="whatsapp-button">
+      <i class="fab fa-whatsapp text-white text-2xl"></i>
     </div>
+    <span class="whatsapp-label">Halo! Teman Sehat Minbu <br> Ada yang bisa kami bantu? </span>
+  </a>
+</div>
 
     <!-- Added back to top button -->
     <div class="back-to-top" id="backToTop">
