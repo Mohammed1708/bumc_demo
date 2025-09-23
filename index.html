@@ -55,13 +55,13 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(223, 59, 59, 0.986);
             cursor: pointer;
             transition: background 0.3s;
         }
         
         .indicator.active {
-            background: white;
+            background: rgb(122, 122, 122);
         }
         
         .service-card {
@@ -195,6 +195,7 @@
                 <!-- Desktop navigation -->
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="text-gray-700 hover:text-red-700 transition-colors">Beranda</a>
+                    <a href="#services" class="text-gray-700 hover:text-red-700 transition-colors">Layanan</a>
                     <a href="profile.html" class="text-gray-700 hover:text-red-700 transition-colors">Profil Klinik</a>
                     <a href="information.html" class="text-gray-700 hover:text-red-700 transition-colors">Informasi</a>
                     <a href="promo.html" class="text-gray-700 hover:text-red-700 transition-colors">Promo</a>
@@ -209,6 +210,7 @@
             <div id="mobile-menu" class="hidden md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
                     <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Beranda</a>
+                    <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Layanan</a>
                     <a href="profile.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Profil Klinik</a>
                     <a href="information.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Informasi</a>
                     <a href="promo.html" class="block px-3 py-2 text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-colors">Promo</a>
@@ -228,12 +230,19 @@
 
         <!-- Slide 2 -->
         <div class="slide active relative w-full h-full">
-            <img src="assets/Banner Website 1920x900px BUMC.jpg"
+            <img src="assets/Paket All in One Vaksin Umrah_Banner Website 1920x900 PX.jpg"
             alt="BUMC Medical Center"
             class="w-full h-auto object-contain md:object-cover object-top" />
         </div>
 
         <!-- Slide 3 -->
+        <div class="slide active relative w-full h-full">
+            <img src="assets/Banner Website 1920x900px BUMC.jpg"
+            alt="BUMC Medical Center"
+            class="w-full h-auto object-contain md:object-cover object-top" />
+        </div>
+
+        <!-- Slide 4 -->
         <div class="slide active relative w-full h-full">
             <img src="assets/Banner Website BUMC paket vaksin umrah austus.jpg"
             alt="BUMC Medical Center"
@@ -245,6 +254,7 @@
             <div class="indicator active" onclick="currentSlide(1)"></div>
             <div class="indicator" onclick="currentSlide(2)"></div>
             <div class="indicator" onclick="currentSlide(3)"></div>
+            <div class="indicator" onclick="currentSlide(4)"></div>
         </div>
     </section>
 
@@ -379,15 +389,14 @@
                 <!-- Testimonial 1 -->
                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
                     <div class="flex items-center mb-6">
-                        <img src="/placeholder.svg?height=60&width=60" 
-                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <img src="assets/testimoni/Haykal-Kamil-Founder-ZM.jpeg" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold" style="color: var(--foreground)">Ibu Sarah</h4>
-                            <p class="text-sm" style="color: var(--muted-foreground)">Jakarta</p>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Haykal Kamil</h4>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4 text-pretty">
-                        "Pelayanan di BUMC sangat memuaskan. Dokter dan perawatnya ramah, fasilitas lengkap dan modern. Sangat direkomendasikan!"
+                        "Home service-nya praktis banget, protokol kesehatannya ketat, dan hasilnya langsung beres di hari yang sama. Terima kasih, BUMC!"
                     </p>
                     <div class="flex text-yellow-400">
                         <i class="fas fa-star"></i>
@@ -401,15 +410,14 @@
                 <!-- Testimonial 2 -->
                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
                     <div class="flex items-center mb-6">
-                        <img src="/placeholder.svg?height=60&width=60" 
-                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <img src="assets/testimoni/Tantri namirah.webp" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold" style="color: var(--foreground)">Bapak Ahmad</h4>
-                            <p class="text-sm" style="color: var(--muted-foreground)">Bogor</p>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Tantri Namirah</h4>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4 text-pretty">
-                        "Homeservice BUMC sangat membantu. Tidak perlu repot ke rumah sakit, perawat datang langsung ke rumah dengan pelayanan profesional."
+                        "Karena hari ini kami harus ke luar kota, senang sekali bisa vaksinasi di rumah. Prokesnya super ketat. Makasih BUMC!"
                     </p>
                     <div class="flex text-yellow-400">
                         <i class="fas fa-star"></i>
@@ -423,15 +431,77 @@
                 <!-- Testimonial 3 -->
                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
                     <div class="flex items-center mb-6">
-                        <img src="/placeholder.svg?height=60&width=60" 
-                             alt="Pasien" class="w-12 h-12 rounded-full mr-4">
+                        <img src="assets/testimoni/Wanda Hamidah.jpeg" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold" style="color: var(--foreground)">Ibu Maya</h4>
-                            <p class="text-sm" style="color: var(--muted-foreground)">Depok</p>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Wanda Hamidah</h4>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4 text-pretty">
-                        "Vaksinasi untuk keluarga di BUMC sangat terpercaya. Prosesnya cepat, aman, dan vaksin dijamin asli. Terima kasih BUMC!"
+                         “Cobain home service untuk vitamin injection dari BUMC—praktis, cepat, dan bikin badan lebih fit. Love it!”
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="assets/testimoni/Cindercella.jpeg" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Cindercella</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                         “Aku sekeluarga baru aja swab PCR plus immune boost bareng BUMC. Home service-nya profesional dan super higienis. Thank you so much, BUMC!”
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="assets/testimoni/Nirina Zubir.jpeg" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Nirina Zubir</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                         “Sebelum kerjaan luar kota, aku di-swab dulu sama tim BUMC. Cepat, rapi, dan bikin tenang!”
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                 <div class="p-8 rounded-xl shadow-lg" style="background-color: var(--muted)">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" 
+                             alt="Pasien" class="w-20 h-20 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold" style="color: var(--foreground)">Wiwi Widia</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-pretty">
+                         “Pelayanannya top! Staf dan dokternya ramah banget. Waktu saya sakit tinggal booking, datang tanpa antre, dan fasilitasnya bersih serta wangi. Recommended!”
                     </p>
                     <div class="flex text-yellow-400">
                         <i class="fas fa-star"></i>
@@ -671,21 +741,21 @@
     <footer class="py-16 text-white" style="background-color: var(--primary)">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Company Info -->
+            <!-- Company Info -->
                 <div>
                     <h3 class="font-heading text-2xl font-bold mb-6">BUMC</h3>
                     <p class="text-green-100 mb-6 text-pretty">
-                        Medical Center terpercaya dengan pelayanan kesehatan berkualitas tinggi untuk seluruh keluarga.
+                        Your Health Is Our Priority
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                        <a href="https://www.facebook.com/share/17SypW9vxP/" target="_blank" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                        <a href="https://www.instagram.com/bumc.id?utm_source=ig_web_button_share_sheet&igsh=MXNnNW15NTNsbzE1YQ%3D%3D" target="_blank" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://www.tiktok.com/@klinikbumc.id?_t=zt-8xmonivut8p&_r=1" target="_blank" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -694,36 +764,31 @@
                 <div>
                     <h4 class="font-heading text-lg font-semibold mb-6">Tautan Cepat</h4>
                     <ul class="space-y-3">
-                        <!-- Updated footer links to separate pages -->
                         <li><a href="index.html" class="text-green-100 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="index.html#services" class="text-green-100 hover:text-white transition-colors">Layanan</a></li>
                         <li><a href="profile.html" class="text-green-100 hover:text-white transition-colors">Profil Klinik</a></li>
                         <li><a href="information.html" class="text-green-100 hover:text-white transition-colors">Informasi</a></li>
                         <li><a href="promo.html" class="text-green-100 hover:text-white transition-colors">Promo</a></li>
                     </ul>
                 </div>
 
-                <!-- Services -->
-                <div>
-                    <h4 class="font-heading text-lg font-semibold mb-6">Layanan</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pemeriksaan Umum</a></li>
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Pediatri</a></li>
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Radiologi</a></li>
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">Laboratorium</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
+                <!-- Contact (moved here) -->
                 <div>
                     <h4 class="font-heading text-lg font-semibold mb-6">Kontak</h4>
                     <div class="space-y-3">
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3"></i>
-                            <span class="text-green-100">Jl. Dewi Sartika No 25 - 30, Kalibata, Kec. Kramat Jati, Kota Jakarta Timur, Daerah Khusus Ibu Kota Jakarta 13630</span>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 mt-1"></i>
+                            <span class="text-green-100">
+                                Jl. Dewi Sartika No.25 - 30, Kalibata, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13630
+                            </span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone mr-3"></i>
                             <span class="text-green-100">021 8096222</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-whatsapp mr-3"></i>
+                            <span class="text-green-100">+62 816 100 403</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope mr-3"></i>
@@ -734,6 +799,26 @@
                             <span class="text-green-100">08.00 - 17.00 WIB</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Map -->
+                <div>
+                    <h4 class="font-heading text-lg font-semibold mb-6">Lokasi Kami</h4>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126911.68562395991!2d106.79464443447533!3d-6.265021462337755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f25537ac4cd3%3A0x30c0425b54c795fd!2sBUMC%20Kalibata%20-%20Binawan%20University%20Medical%20Center!5e0!3m2!1sen!2sid!4v1758598439301!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="250" 
+                        style="border:0; border-radius: 0.5rem;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <a 
+                    href="https://goo.gl/maps/yourGoogleMapLink" 
+                    target="_blank" 
+                    class="block mt-2 text-green-100 hover:text-white transition-colors text-sm underline">
+                        Lihat di Google Maps
+                    </a>
                 </div>
             </div>
 
